@@ -1,0 +1,84 @@
+import mazzoCarte from './data/carte.json';
+
+/**
+ * Logica di gioco per "Gioco Sfortuna" (Meccanica stile Shitiest/Timeline)
+ * Fornisce le funzioni serverless pure per la gestione del flusso di gioco.
+ */
+
+/**
+ * Rappresenta una carta sfortuna nel gioco.
+ * @typedef {Object} Carta
+ * @property {string} id - Identificativo unico della carta.
+ * @property {string} nome - Descrizione dell'evento sfortunato.
+ * @property {string} immagine - Nome del file o riferimento dell'immagine associata.
+ * @property {number} indiceSfortuna - Valore numerico della sfortuna (da 1.5 a 99.5).
+ */
+
+/**
+ * Mescola un array di carte utilizzando l'algoritmo di Fisher-Yates.
+ * @param {Carta[]} array - L'array di carte da mescolare.
+ * @returns {Carta[]} Un nuovo array di carte mescolate casualmente.
+ */
+function mescolaMazzo(array) {
+  const mazzoCopia = [...array];
+  for (let i = mazzoCopia.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [mazzoCopia[i], mazzoCopia[j]] = [mazzoCopia[j], mazzoCopia[i]];
+  }
+  return mazzoCopia;
+}
+
+/**
+ * Inizializza una nuova partita preparando il mazzo mescolato,
+ * la timeline iniziale di 3 carte ordinate e la prima carta da indovinare.
+ * * @returns {Object} Stato iniziale del gioco.
+ * @property {Carta[]} mazzo - Il mazzo rimanente da cui pescare.
+ * @property {Carta[]} timeline - Le prime 3 carte ordinate per indiceSfortuna crescente.
+ * @property {Carta} cartaCorrente - La carta nascosta che il giocatore deve posizionare.
+ */
+export function inizializzaPartita() {
+  const mazzoMescolato = mescolaMazzo(mazzoCarte);
+
+  // Prendiamo le prime 3 carte per la timeline iniziale
+  const carteIniziali = mazzoMescolato.splice(0, 3);
+  
+  // Ordiniamo la timeline in modo crescente in base all'indice di sfortuna
+  const timeline = carteIniziali.sort((a, b) => a.indiceSfortuna - b.indiceSfortuna);
+
+  // Peschiamo la carta corrente che l'utente dovrà indovinare
+  const cartaCorrente = mazzoMescolato.pop();
+
+  return {
+    mazzo: mazzoMescolato,
+    timeline,
+    cartaCorrente
+  };
+}
+
+/**
+ * Verifica se l'indice in cui l'utente vuole inserire la carta corrente è corretto
+ * rispetto alla timeline attuale (ordinata in modo crescente).
+ * * @param {Carta[]} timeline - La timeline attuale dei file sul tabellone.
+ * @param {Carta} cartaCorrente - La carta di cui si deve indovinare la posizione.
+ * @param {number} indiceScelto - L'indice della timeline in cui l'utente vuole inserire la carta.
+ * @returns {boolean} True se la posizione mantiene l'ordine crescente, False altrimenti.
+ */
+export function verificaPosizionamento(timeline, cartaCorrente, indiceScelto) {
+  const valoreNascosto = cartaCorrente.indiceSfortuna;
+
+  // Caso 1: Inserimento all'inizio della timeline
+  if (indiceScelto === 0) {
+    return valoreNascosto < timeline[0].indiceSfortuna;
+  }
+
+  // Caso 2: Inserimento alla fine della timeline
+  if (indiceScelto === timeline.length) {
+    return valoreNascosto > timeline[timeline.length - 1].indiceSfortuna;
+  }
+
+  // Caso 3: Inserimento tra due carte esistenti
+  const elementoPrecedente = timeline[indiceScelto - 1].indiceSfortuna;
+  const elementoSuccessivo = timeline[indiceScelto].indiceSfortuna;
+
+  return valoreNascosto > elementoPrecedente && valoreNascosto < elementoSuccessivo;
+}
