@@ -50,6 +50,32 @@ export default function App() {
     { id: 23, nome: "Giocare tutta la partita in dieci per un cartellino rosso ingiusto", sfortuna: 73 },
     { id: 24, nome: "Tirare una punizione perfetta che batte sulla traversa ed esce", sfortuna: 45 },
     { id: 25, nome: "Subire gol sul rinvio del tuo portiere che sbatte sull'attaccante", sfortuna: 64 }
+    { id: 26, nome: "Il bomber della squadra sbaglia tre rigori nella stessa partita", sfortuna: 77 },
+    { id: 27, nome: "Perdere la finale della coppa nazionale ai calci di rigore ad oltranza", sfortuna: 84 },
+    { id: 28, nome: "Dominare la partita con venti tiri in porta e perdere 1-0", sfortuna: 79 },
+    { id: 29, nome: "Il difensore fa un retropassaggio senza vedere il portiere fuori", sfortuna: 67 },
+    { id: 30, nome: "L'allenatore sbaglia i cambi e si subiscono due gol in cinque minuti", sfortuna: 52 },
+    { id: 31, nome: "Farsi parare il rigore decisivo dal portiere di riserva avversario", sfortuna: 74 },
+    { id: 32, nome: "Prendere gol da un ex giocatore che non segnava da tre anni", sfortuna: 57 },
+    { id: 33, nome: "Il capitano fa un fallo di mano ingenuo in area al 90'", sfortuna: 72 },
+    { id: 34, nome: "La palla sbatte sul palo, scorre sulla linea ma non entra", sfortuna: 48 },
+    { id: 35, nome: "Perdere a tavolino per aver schierato un giocatore squalificato", sfortuna: 86 },
+    { id: 36, nome: "Subire tre infortuni nei primi venti minuti finendo i cambi", sfortuna: 69 },
+    { id: 37, nome: "L'arbitro fischia la fine un secondo prima che la palla entri", sfortuna: 83 },
+    { id: 38, nome: "Prendere gol su una deviazione decisiva della barriera", sfortuna: 42 },
+    { id: 39, nome: "Il difensore scivola sull'erba bagnata e lascia campo alla punta", sfortuna: 53 },
+    { id: 40, nome: "Venire eliminati dalla coppa per la regola dei gol in trasferta", sfortuna: 76 },
+    { id: 41, nome: "Il pallone si sgonfia a metà di un tiro diretto all'incrocio", sfortuna: 30 },
+    { id: 42, nome: "L'attaccante esulta togliendosi la maglia ed espulso per doppio giallo", sfortuna: 61 },
+    { id: 43, nome: "Subire gol perché il portiere viene accecato dai riflettori", sfortuna: 40 },
+    { id: 44, nome: "Un difensone devia il pallone nella propria porta con il tacco", sfortuna: 59 },
+    { id: 45, nome: "Perdere il derby per colpa di un rigore concesso all'ultimo secondo", sfortuna: 81 },
+    { id: 46, nome: "La squadra avversaria segna in evidente fuorigioco ma il VAR è rotto", sfortuna: 93 },
+    { id: 47, nome: "L'attaccante colpisce il palo interno, la palla sbatte sull'altro ed esce", sfortuna: 46 },
+    { id: 48, nome: "Prendere gol direttamente da calcio d'angolo per il forte vento", sfortuna: 51 },
+    { id: 49, nome: "Il portiere para il rigore ma la palla torna alla punta che segna", sfortuna: 66 },
+    { id: 50, nome: "Il guardalinee sbaglia ed alza la bandierina, la difesa si ferma e subisce gol", sfortuna: 71 }
+  ];
   ];
 
   return (
