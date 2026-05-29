@@ -83,6 +83,36 @@ export default function App() {
   ];
   ];
 
+
+     const avviaGioco = () => {
+    const mazzoCopiato = [...mazzoDelle50Sfortune];
+    const estratte = [];
+    for (let i = 0; i < 4; i++) {
+      const indiceCasuale = Math.floor(Math.random() * mazzoCopiato.length);
+      estratte.push(mazzoCopiato.splice(indiceCasuale, 1)[0]);
+    }
+    const primeTre = [estratte[0], estratte[1], estratte[2]].sort((a, b) => a.sfortuna - b.sfortuna);
+    setTimeline(primeTre);
+    setDaCollocare(estratte[3]);
+    setSchermata('GIOCO');
+  };
+
+  const controllaScelta = (indiceScelto) => {
+    let corretto = false;
+    const valore = daCollocare.sfortuna;
+    if (indiceScelto === 0 && valore < timeline[0].sfortuna) corretto = true;
+    else if (indiceScelto === 1 && valore > timeline[0].sfortuna && valore < timeline[1].sfortuna) corretto = true;
+    else if (indiceScelto === 2 && valore > timeline[1].sfortuna && valore < timeline[2].sfortuna) corretto = true;
+    else if (indiceScelto === 3 && valore > timeline[2].sfortuna) corretto = true;
+
+    if (corretto) {
+      setEsito('HAI INDOVINATO! 🎉 La tua intuizione calcistica è perfetta.');
+    } else {
+      setEsito('HAI SBAGLIATO! ❌ Non era quella la posizione corretta.');
+    }
+    setSchermata('RISULTATO');
+  };
+
   return (
     <View style={styles.container}>
       {schermata === 'HOME' && (
