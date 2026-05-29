@@ -1,4 +1,6 @@
-
+/**
+ * @author Gabriele Coppola
+ */
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Button, ScrollView } from 'react-native';
 
@@ -84,7 +86,14 @@ export default function App() {
   ];
 
 
-     const avviaGioco = () => {
+     /**
+   * Inizializza una nuova partita selezionando casualmente 4 carte dal mazzo.
+   * Ordina le prime 3 in modo crescente per creare la timeline iniziale
+   * e imposta la quarta come carta da collocare.
+   * @function avviaGioco
+   * @returns {void}
+   */
+  const avviaGioco = () => {
     const mazzoCopiato = [...mazzoDelle50Sfortune];
     const estratte = [];
     for (let i = 0; i < 4; i++) {
@@ -97,6 +106,13 @@ export default function App() {
     setSchermata('GIOCO');
   };
 
+  /**
+   * Verifica se l'indice della posizione scelto dall'utente per la nuova carta è corretto
+   * rispetto ai valori di sfortuna della timeline attuale.
+   * @function controllaScelta
+   * @param {number} indiceScelto - L'indice della posizione selezionata (da 0 a 3).
+   * @returns {void}
+   */
   const controllaScelta = (indiceScelto) => {
     let corretto = false;
     const valore = daCollocare.sfortuna;
@@ -112,7 +128,6 @@ export default function App() {
     }
     setSchermata('RISULTATO');
   };
-
   return (
     <View style={styles.container}>
       {schermata === 'HOME' && (
