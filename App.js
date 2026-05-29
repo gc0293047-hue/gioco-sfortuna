@@ -126,6 +126,37 @@ export default function App() {
   );
 }
 
+
+{schermata === 'GIOCO' && daCollocare && (
+        <ScrollView contentContainerStyle={styles.schermataGioco}>
+          <Text style={styles.titoloSezione}>LA CARTA DA INSERIRE:</Text>
+          <View style={styles.cartaSpeciale}>
+            <Text style={styles.testoCarta}>{daCollocare.nome}</Text>
+          </View>
+
+          <Text style={styles.titoloSezione}>LA TUA TIMELINE ATTUALE:</Text>
+          <View style={styles.cronologia}>
+            {timeline.map((item, index) => (
+              <View key={index} style={styles.cartaNormale}>
+                <Text style={styles.testoCartaMazzo}>{item.nome}</Text>
+                <Text style={styles.puntiSfortuna}>Sfortuna: {item.sfortuna}</Text>
+              </View>
+            ))}
+          </View>
+
+          <Text style={styles.titoloSezione}>DOVE VUOI POSIZIONARLA?</Text>
+          <View style={styles.scatolaBottoni}>
+            <Button title={"Inserisci prima di tutto (Meno di " + timeline[0].sfortuna + ")"} color="gray" onPress={() => controllaScelta(0)} />
+            <Text></Text> 
+            <Button title={"Inserisci tra " + timeline[0].sfortuna + " e " + timeline[1].sfortuna} color="gray" onPress={() => controllaScelta(1)} />
+            <Text></Text>
+            <Button title={"Inserisci tra " + timeline[1].sfortuna + " e " + timeline[2].sfortuna} color="black" onPress={() => controllaScelta(2)} />
+            <Text></Text>
+            <Button title={"Inserisci alla fine (Più di " + timeline[2].sfortuna + ")"} color="gray" onPress={() => controllaScelta(3)} />
+          </View>
+        </ScrollView>
+      )}
+
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
