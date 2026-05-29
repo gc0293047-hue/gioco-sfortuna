@@ -18,6 +18,11 @@ import { View, StyleSheet, Text, Button, ScrollView } from 'react-native';
 export default function App() {
   const [schermata, setSchermata] = useState('HOME');
 
+const [timeline, setTimeline] = useState([]);
+const [daCollocare, setDaCollocare] = useState(null);
+const [esito, setEsito] = useState('');
+  
+
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Button, ScrollView } from 'react-native';
 
