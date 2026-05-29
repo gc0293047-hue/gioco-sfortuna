@@ -157,54 +157,111 @@ export default function App() {
         </ScrollView>
       )}
 
+{schermata === 'RISULTATO' && daCollocare && (
+        <View style={styles.schermataCentrata}>
+          <Text style={styles.titoloSezione}>ESITO DELLA SCELTA:</Text>
+          <Text style={styles.testoEsito}>{esito}</Text>
+          
+          <View style={styles.cartaSpeciale}>
+            <Text style={styles.testoCarta}>{daCollocare.nome}</Text>
+            <Text style={styles.puntiSfortuna}>Valore reale di sfortuna: {daCollocare.sfortuna}</Text>
+          </View>
+
+          <Button title="GIOCA ANCORA" color="black" onPress={avviaGioco} />
+        </View>
+      )}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: { 
     flex: 1, 
     backgroundColor: 'white', 
-    paddingTop: 50,
+    paddingTop: 50 
   },
   schermataCentrata: { 
     flex: 1, 
     alignItems: 'center', 
     justifyContent: 'center', 
-    padding: 20,
+    padding: 20 
   },
   titoloHome: { 
     fontSize: 32, 
     fontWeight: 'bold', 
     color: 'black', 
     marginBottom: 10, 
-    textAlign: 'center',
+    textAlign: 'center' 
   },
   sottotitoloHome: { 
     fontSize: 16, 
     color: 'gray', 
     marginBottom: 40, 
-    textAlign: 'center',
+    textAlign: 'center' 
   },
-});
-  
-  return (
-    <View style={styles.container}>
-      {schermata === 'HOME' && (
-        <View style={styles.schermataCentrata}>
-          <Text style={styles.titoloHome}>GIOCO SFORTUNA ⚽</Text>
-          <Text style={styles.sottotitoloHome}>Riuscirai a inserire la quarta sfiga al posto giusto?</Text>
-          <Button title="INIZIA A GIOCARE" color="black" onPress={() => setSchermata('GIOCO')} />
-        </View>
-      )}
-    </View>
-  );
-}
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'white', paddingTop: 50 },
-  schermataCentrata: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20 },
-  titoloHome: { fontSize: 32, fontWeight: 'bold', color: 'black', marginBottom: 10, textAlign: 'center' },
-  sottotitoloHome: { fontSize: 16, color: 'gray', marginBottom: 40, textAlign: 'center' }
-});
-
-
-
-
-
+  schermataGioco: { 
+    padding: 20, 
+    alignItems: 'center' 
+  },
+  titoloSezione: { 
+    fontSize: 14, 
+    fontWeight: 'bold', 
+    color: 'gray', 
+    marginTop: 20, 
+    marginBottom: 10, 
+    letterSpacing: 1 
+  },
+  cartaSpeciale: { 
+    backgroundColor: '#fff', 
+    borderWidth: 3, 
+    borderColor: 'black', 
+    borderRadius: 12, 
+    padding: 20, 
+    width: '100%', 
+    marginBottom: 20, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 4 }, 
+    shadowOpacity: 0.1, 
+    shadowRadius: 5, 
+    elevation: 5 
+  },
+  cartaNormale: { 
+    backgroundColor: '#f9f9f9', 
+    borderWidth: 1, 
+    borderColor: '#e0e0e0', 
+    borderRadius: 8, 
+    padding: 15, 
+    marginBottom: 10 
+  },
+  cronologia: { 
+    width: '100%', 
+    marginBottom: 10 
+  },
+  scatolaBottoni: { 
+    width: '100%', 
+    marginBottom: 30 
+  },
+  testoCarta: { 
+    fontSize: 18, 
+    fontWeight: 'bold', 
+    color: 'black', 
+    textAlign: 'center' 
+  },
+  testoCartaMazzo: { 
+    fontSize: 15, 
+    color: '#333' 
+  },
+  puntiSfortuna: { 
+    fontSize: 13, 
+    fontWeight: 'bold', 
+    color: 'red', 
+    marginTop: 5 
+  },
+  testoEsito: { 
+    fontSize: 20, 
+    fontWeight: 'bold', 
+    textAlign: 'center', 
+    marginBottom: 30, 
+    paddingHorizontal: 10 
+  }
 });
